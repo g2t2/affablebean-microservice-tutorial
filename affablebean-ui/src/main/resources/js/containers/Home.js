@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Category from '../components/Category';
 import Item from '../components/Item';
 import Cart from '../components/Cart';
+import Checkout from '../components/Checkout';
 import {addCart, clearCart, selectCategory, selectNav, updateQuantity} from '../actions';
 
 class Home extends Component {
@@ -55,6 +56,9 @@ class Home extends Component {
                 break;
             case types.CART_PAGE:
                 page = (<Cart data={this.props.cartData} actions={this.cartActions}/>);
+                break;
+            case types.CHECKOUT_PAGE:
+                page = (<Checkout/>);
                 break;
             default:
                 page = (<Category data={this.props.categoryData} actions={this.categoryActions}/>);
