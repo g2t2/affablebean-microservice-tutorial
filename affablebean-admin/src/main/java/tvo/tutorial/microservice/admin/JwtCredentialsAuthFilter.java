@@ -47,7 +47,7 @@ public class JwtCredentialsAuthFilter extends AbstractAuthenticationProcessingFi
             .setSubject(auth.getName())
             .claim("authorities", auth.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
             .setIssuedAt(Date.from(now))
-            .setExpiration(Date.from(now.plusSeconds(24*60*60)))
+            .setExpiration(Date.from(now.plusSeconds(5*60)))
             .signWith(SignatureAlgorithm.HS256, jwtSecret.getBytes())
             .compact();
         rsp.addHeader("Authorization", "Bearer " + token);
